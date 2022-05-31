@@ -3146,6 +3146,19 @@ export const contextMenuItems = [
   'NextPage',
 ];
 
+export const contextMenuItemsEmployeesPage = [
+  'AutoFit',
+  'AutoFitAll',
+  'Copy',
+  'PdfExport',
+  'ExcelExport',
+  'CsvExport',
+  'FirstPage',
+  'PrevPage',
+  'LastPage',
+  'NextPage',
+];
+
 export const ecomPieChartData = [
   { x: '2018', y: 18, text: '35%' },
   { x: '2019', y: 18, text: '15%' },
