@@ -3146,7 +3146,7 @@ export const contextMenuItems = [
   'NextPage',
 ];
 
-export const contextMenuItemsEmployeesPage = [
+export const smallContextMenuItems = [
   'AutoFit',
   'AutoFitAll',
   'Copy',

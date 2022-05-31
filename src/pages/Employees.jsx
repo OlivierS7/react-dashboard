@@ -1,7 +1,7 @@
 import React from 'react';
 import { GridComponent, Inject, ColumnsDirective, ColumnDirective, ContextMenu, ExcelExport, PdfExport, Search, Page, Toolbar } from '@syncfusion/ej2-react-grids';
 
-import { employeesData, contextMenuItemsEmployeesPage, employeesGrid } from '../data/dummy';
+import { employeesData, smallContextMenuItems, employeesGrid } from '../data/dummy';
 import { Header } from '../components';
 
 const Employees = () => {
@@ -22,7 +22,7 @@ const Employees = () => {
         pageSettings={{ pageCount: 5 }}
         editSettings={editing}
         toolbar={toolbarOptions}
-        contextMenuItems={contextMenuItemsEmployeesPage}
+        contextMenuItems={smallContextMenuItems}
       >
         <ColumnsDirective>
           {employeesGrid.map((item, index) => <ColumnDirective key={index} {...item} />)}
