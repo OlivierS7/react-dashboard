@@ -1,7 +1,7 @@
 import React from 'react';
-import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, Inject, Edit, Toolbar, Sort, Filter } from '@syncfusion/ej2-react-grids';
+import { GridComponent, ColumnsDirective, ColumnDirective, Page, Selection, ContextMenu, ExcelExport, PdfExport, Inject, Edit, Toolbar, Sort, Filter } from '@syncfusion/ej2-react-grids';
 
-import { customersData, customersGrid } from '../data/dummy';
+import { customersData, smallContextMenuItems, customersGrid } from '../data/dummy';
 import { Header } from '../components';
 
 const Customers = () => {
@@ -16,16 +16,19 @@ const Customers = () => {
         dataSource={customersData}
         enableHover={false}
         allowPaging
+        allowExcelExport
+        allowPdfExport
         pageSettings={{ pageCount: 5 }}
         selectionSettings={selectionsettings}
         toolbar={toolbarOptions}
         editSettings={editing}
         allowSorting
+        contextMenuItems={smallContextMenuItems}
       >
         <ColumnsDirective>
           {customersGrid.map((item, index) => <ColumnDirective key={index} {...item} />)}
         </ColumnsDirective>
-        <Inject services={[Page, Selection, Toolbar, Edit, Sort, Filter]} />
+        <Inject services={[Page, Selection, Toolbar, Edit, ExcelExport, PdfExport, ContextMenu, Sort, Filter]} />
       </GridComponent>
     </div>
   );
