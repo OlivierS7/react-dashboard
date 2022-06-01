@@ -17,6 +17,8 @@ export const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(true);
   const [isClicked, setIsClicked] = useState(initialState);
   const [isCart, setIsCart] = useState(false);
+  const [isChat, setIsChat] = useState(false);
+  const [isNotifications, setIsNotifications] = useState(false);
 
   const setMode = (e) => {
     setCurrentMode(e.target.value);
@@ -31,7 +33,7 @@ export const ContextProvider = ({ children }) => {
   const handleClick = (clicked) => setIsClicked({ ...initialState, [clicked]: true });
 
   return (
-    <StateContext.Provider value={{ currentColor, currentMode, activeMenu, screenSize, setScreenSize, handleClick, isClicked, initialState, setIsClicked, setActiveMenu, setCurrentColor, setCurrentMode, setMode, setColor, themeSettings, setThemeSettings, isCart, setIsCart }}>
+    <StateContext.Provider value={{ currentColor, currentMode, activeMenu, screenSize, setScreenSize, handleClick, isClicked, initialState, setIsClicked, setActiveMenu, setCurrentColor, setCurrentMode, setMode, setColor, themeSettings, setThemeSettings, isCart, setIsCart, isChat, setIsChat, isNotifications, setIsNotifications }}>
       {children}
     </StateContext.Provider>
   );

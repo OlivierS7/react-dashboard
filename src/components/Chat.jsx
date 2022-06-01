@@ -1,12 +1,12 @@
 import React from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
 
-import { Button } from '.';
+import { Button, CustomButton } from '.';
 import { chatData } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 
 const Chat = () => {
-  const { currentColor } = useStateContext();
+  const { currentColor, setIsChat } = useStateContext();
 
   return (
     <div className="nav-item absolute right-5 md:right-52 top-16 bg-white dark:bg-[#42464D] p-8 rounded-lg w-96">
@@ -17,13 +17,10 @@ const Chat = () => {
             5 New
           </button>
         </div>
-        <Button
-          icon={<MdOutlineCancel />}
+        <CustomButton title="Close Menu" 
+          customFunc={() => setIsChat((isChat) => !isChat)}
           color="rgb(153, 171, 180)"
-          bgHoverColor="light-gray"
-          size="2xl"
-          borderRadius="50%"
-        />
+          icon={<MdOutlineCancel />} />
       </div>
       <div className="mt-5 ">
         {chatData?.map((item, index) => (

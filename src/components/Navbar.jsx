@@ -23,7 +23,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
-  const { activeMenu, isCart, setActiveMenu, isClicked, setIsCart, handleClick, screenSize, setScreenSize } = useStateContext();
+  const { isNotifications, setIsNotifications, isChat, isCart, setActiveMenu, isClicked, setIsCart, handleClick, screenSize, setScreenSize, setIsChat } = useStateContext();
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -51,16 +51,16 @@ const Navbar = () => {
 
       <div className="flex">
         <NavButton title="Cart" 
-        customFunc={() => setIsCart((previousisCart) => !previousisCart)}
+        customFunc={() => setIsCart((isCart) => !isCart)}
         color="blue"
         icon={<FiShoppingCart />} />
         <NavButton title="Chat" 
-        customFunc={() => handleClick('chat')}
+        customFunc={() => setIsChat((isChat) => !isChat)}
         dotColor="#03C9D7"
         color="blue"
         icon={<BsChatLeft />} />
         <NavButton title="Notifications" 
-        customFunc={() => handleClick('notification')}
+        customFunc={() => setIsNotifications((isNotifications) => !isNotifications)}
         dotColor="#03C9D7"
         color="blue"
         icon={<RiNotification3Line />} />
@@ -76,8 +76,8 @@ const Navbar = () => {
         </TooltipComponent>
 
         {isCart && <Cart />}
-        {isClicked.chat && <Chat />}
-        {isClicked.notification && <Notification />}
+        {isChat && <Chat />}
+        {isNotifications && <Notification />}
         {isClicked.userProfile && <UserProfile />}
       </div>     
     </div>

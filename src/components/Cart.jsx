@@ -1,33 +1,21 @@
 import React from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
-import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import { useStateContext } from '../contexts/ContextProvider';
 import { cartData } from '../data/dummy';
-import { Button } from '.';
+import { Button, CustomButton } from '.';
 
 const Cart = () => {
   const { currentColor, setIsCart } = useStateContext();
-
-  const NavButton = ({  customFunc, icon, color }) => (
-    <TooltipComponent position='BottomCenter'>
-      <button type='button' 
-      onClick={ () => customFunc()}
-      style={{ color }}
-      className="relative text-xl rounded-full p-3 hover:bg-light-gray">
-          { icon }
-      </button>
-    </TooltipComponent>
-  );
 
   return (
     <div className="bg-half-transparent w-full fixed nav-item top-0 right-0">
       <div className="float-right h-screen  duration-1000 ease-in-out dark:text-gray-200 transition-all dark:bg-[#484B52] bg-white md:w-400 p-8">
         <div className="flex justify-between items-center">
           <p className="font-semibold text-lg">Shopping Cart</p>
-          <NavButton title="Menu" 
-          customFunc={() => setIsCart((previousActiveMeny) => !previousActiveMeny)}
+          <CustomButton title="Close Menu" 
+          customFunc={() => setIsCart((isCart) => !isCart)}
           color="rgb(153, 171, 180)"
           icon={<MdOutlineCancel />} />
         </div>
