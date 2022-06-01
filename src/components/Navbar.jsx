@@ -23,7 +23,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
-  const { activeMenu, setActiveMenu, isClicked, setIsClicked, handleClick, screenSize, setScreenSize } = useStateContext();
+  const { activeMenu, isCart, setActiveMenu, isClicked, setIsCart, handleClick, screenSize, setScreenSize } = useStateContext();
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -51,7 +51,7 @@ const Navbar = () => {
 
       <div className="flex">
         <NavButton title="Cart" 
-        customFunc={() => handleClick('cart')}
+        customFunc={() => setIsCart((previousisCart) => !previousisCart)}
         color="blue"
         icon={<FiShoppingCart />} />
         <NavButton title="Chat" 
@@ -75,7 +75,7 @@ const Navbar = () => {
           </div>
         </TooltipComponent>
 
-        {isClicked.cart && <Cart />}
+        {isCart && <Cart />}
         {isClicked.chat && <Chat />}
         {isClicked.notification && <Notification />}
         {isClicked.userProfile && <UserProfile />}
