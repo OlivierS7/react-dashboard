@@ -23,7 +23,7 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 );
 
 const Navbar = () => {
-  const { isNotifications, setIsNotifications, isChat, isCart, setActiveMenu, isClicked, setIsCart, handleClick, screenSize, setScreenSize, setIsChat } = useStateContext();
+  const { isUserProfile, setIsUserProfile, isNotifications, setIsNotifications, isChat, isCart, setActiveMenu,  setIsCart, screenSize, setScreenSize, setIsChat } = useStateContext();
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -32,7 +32,7 @@ const Navbar = () => {
     handleResize();
 
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  });
 
   useEffect(() => {
     if (screenSize <= 900) {
@@ -40,7 +40,7 @@ const Navbar = () => {
     } else {
       setActiveMenu(true)
     }
-  }, [screenSize]);
+  });
 
   return (
     <div className="flex justify-between p-2 md:mx-6 relative">
@@ -66,8 +66,8 @@ const Navbar = () => {
         icon={<RiNotification3Line />} />
         <TooltipComponent content="Profile" position="BottomCenter">
           <div className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
-          onClick={() => handleClick('userProfile')}>
-            <img src={avatar} alt="Profile Image" className="rounded-full w-8 h-8"/>
+          onClick={() => setIsUserProfile((isUserProfile) => !isUserProfile)}>
+            <img src={avatar} alt="Profile" className="rounded-full w-8 h-8"/>
             <p>
               <span className="text-gray-400 text-14">Hi, </span> {' '} <span className="text-gray-400 font-bold ml-1 text-14">Michael</span>
             </p>
@@ -78,7 +78,7 @@ const Navbar = () => {
         {isCart && <Cart />}
         {isChat && <Chat />}
         {isNotifications && <Notification />}
-        {isClicked.userProfile && <UserProfile />}
+        {isUserProfile && <UserProfile />}
       </div>     
     </div>
   )
